@@ -4,8 +4,10 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Chat from './components/Chat';
 import axios from 'axios';
+import config from './config';
 
 function App() {
+  console.log(config.storageUrl)
   const [currentForm, setCurrentForm] = useState('login');
   const [currentUser, setCurrentUser] = useState({})
   const [users, setUsers] = useState([])
@@ -39,28 +41,28 @@ function App() {
 
   // Fetch users
   const fetchUsers = async () => {
-    const res = await fetch('http://localhost:5000/users')
+    const res = await fetch(config.storageUrl.concat('/users'))
     const data = await res.json()
     return data
   }
 
   //Create user
   const createUser = async (user) => {
-    const res = await fetch('http://localhost:5000/users', {method:"POST", headers: {'Content-type': 'application/json'}, body: JSON.stringify(user)})
+    const res = await fetch(config.storageUrl.concat('/users'), {method:"POST", headers: {'Content-type': 'application/json'}, body: JSON.stringify(user)})
     const data = await res.json()
     setUsers([...users, data])
   }
 
   // Fetch messages
   const fetchMessages = async () => {
-    const res = await axios.get('http://localhost:5000/messages')
+    const res = await axios.get(config.storageUrl.concat('/messages'))
     const data = await res.data
     return data
   }
 
   //send message
   const sendMessage = async (msg) => {
-    const res = await fetch('http://localhost:5000/messages', {method:"POST", headers: {'Content-type': 'application/json'}, body: JSON.stringify(msg)})
+    const res = await fetch(config.storageUrl.concat('/messages'), {method:"POST", headers: {'Content-type': 'application/json'}, body: JSON.stringify(msg)})
     const data = await res.json()
     setMessages([...messages, data])
   }
