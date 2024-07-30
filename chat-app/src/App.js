@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Login from './components/Login';
 import Register from './components/Register';
 import Chat from './components/Chat';
+import axios from 'axios';
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -24,7 +25,10 @@ function App() {
       setMessages(messagesFromServer)
     }
     getMessages()
+    const interval = setInterval(getMessages, 5000);
+    return () => clearInterval(interval);
   }, [])
+  
   const toggleForm = (formName) => {
     setCurrentForm(formName);
   }
@@ -49,9 +53,16 @@ function App() {
 
   // Fetch messages
   const fetchMessages = async () => {
-    const res = await fetch('http://localhost:5000/messages')
-    const data = await res.json()
+    const res = await axios.get('http://localhost:5000/messages')
+    const data = await res.data
     return data
+  }
+
+  //send message
+  const sendMessage = async (msg) => {
+    const res = await fetch('http://localhost:5000/messages', {method:"POST", headers: {'Content-type': 'application/json'}, body: JSON.stringify(msg)})
+    const data = await res.json()
+    setMessages([...messages, data])
   }
 
   return (
@@ -59,7 +70,7 @@ function App() {
       {
         (currentForm === "login" && <Login onFormSwitch={toggleForm} users={users} onSetUser={setUser}/> )||
         (currentForm === "register" && <Register onFormSwitch={toggleForm} onCreateUser={createUser} users={users} /> )||
-        (currentForm === "chat" && <Chat currentUser={currentUser} messages={messages} users={users}/>)
+        (currentForm === "chat" && <Chat currentUser={currentUser} messages={messages} users={users} onSendMessage={sendMessage}/>)
       }
     </div>
   );

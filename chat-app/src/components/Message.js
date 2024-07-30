@@ -8,7 +8,7 @@ const Message = ({text, userId, users}) => {
     }
   });
   return (
-    <div>
+    <div className='msg'>
       <p>{userName} wrote: {text}</p>
     </div>
   )
