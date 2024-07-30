@@ -1,0 +1,80 @@
+.App {
+  font-family: Arial, sans-serif;
+  background-image: url("https://background-tiles.com/overview/blue/patterns/large/1027.gif");
+  background-color: #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  
+
+}
+.auth-form-container {
+  text-align: center;
+  width: 600px;
+  color: rgb(0, 0, 0);
+  background-color: #64adffc0;
+  border: 5px inset #3b35ff;
+  border-radius: 10px;
+  padding: 40px;
+}
+.auth-form {
+  text-align: left;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow:  
+ 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form label {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.auth-form input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius:  
+ 3px;
+}
+
+.auth-form button {
+  background-color:  
+ #0004fc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.link-btn {
+  margin-top: 20px;
+  box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background-color:#3d94f6;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1570cd;
+}
+
+.link-btn:hover {
+	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0;
+}
+.link-btn:active {
+	position:relative;
+	top:1px;
+}
+
+
