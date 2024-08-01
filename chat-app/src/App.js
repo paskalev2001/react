@@ -7,7 +7,6 @@ import axios from 'axios';
 import config from './config';
 
 function App() {
-  console.log(config.storageUrl)
   const [currentForm, setCurrentForm] = useState('login');
   const [currentUser, setCurrentUser] = useState({})
   const [users, setUsers] = useState([])
