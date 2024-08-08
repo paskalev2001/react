@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import { decrypt } from '../func/security_fn';
 const Login = ({onFormSwitch, users, onSetUser}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
@@ -9,7 +9,7 @@ const Login = ({onFormSwitch, users, onSetUser}) => {
       let loginSuccess = false
       let foundUser = {}
       users.forEach(user => {
-        if(user.email === email && user.pass === pass) {
+        if(user.email === email && decrypt(user.pass) === pass) {
           loginSuccess = true
           foundUser = user
         }

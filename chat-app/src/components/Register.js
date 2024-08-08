@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import {encrypt} from '../func/security_fn';
 const Register = ({onFormSwitch, onCreateUser, users}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
@@ -16,7 +16,7 @@ const Register = ({onFormSwitch, onCreateUser, users}) => {
     });
 
     if (registrationSuccess){
-      onCreateUser({email, pass, full_name: name})
+      onCreateUser({email, pass: encrypt(pass), full_name: name})
       onFormSwitch('login')
     }
   }
