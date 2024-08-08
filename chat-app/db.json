@@ -1,17 +1,5 @@
 {
   "users": [
-    {
-      "id": "456",
-      "email": "456@456.com",
-      "pass": "123",
-      "full_name": "Zucc"
-    },
-    {
-      "id": "47fb",
-      "email": "e@e.com",
-      "pass": "123",
-      "full_name": "Jerry"
-    }
   ],
   "messages": [
   ]
